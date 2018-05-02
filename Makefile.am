@@ -18,9 +18,16 @@ semigroups_la_SOURCES =  src/pkg.cc src/converter.cc src/bipart.cc
 semigroups_la_SOURCES += src/uf.cc src/fropin.cc src/congpairs.cc
 semigroups_la_SOURCES += src/semigrp.cc
 
-semigroups_la_CXXFLAGS = -std=c++11 -O3 -g -march=native
+semigroups_la_CXXFLAGS = -std=gnu++11 -O3 -g -march=native
 
-semigroups_la_CPPFLAGS = $(GAP_CPPFLAGS) -DCONFIG_H
+semigroups_la_CPPFLAGS =  $(GAP_CPPFLAGS) -DCONFIG_H 
+semigroups_la_CPPFLAGS += -I$(top_srcdir)/src/libsemigroups/extern/HPCombi/include
+if KERNEL_DEBUG
+semigroups_la_CPPFLAGS += -DDEBUG
+else
+semigroups_la_CPPFLAGS += -DNDEBUG
+endif
+
 # Note that the latter is only for GAP 4.4.12
 semigroups_la_LDFLAGS = -module -avoid-version
 
