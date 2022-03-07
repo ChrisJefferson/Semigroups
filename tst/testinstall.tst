@@ -8,7 +8,8 @@
 #############################################################################
 ##
 gap> START_TEST("Semigroups package: testinstall.tst");
-gap> LoadPackage("semigroups", false);;
+gap> SetInfoLevel(InfoPackageLoading, 4);
+gap> LoadPackage("semigroups");;
 
 # Set info levels and user preferences
 gap> SEMIGROUPS.StartTest();
