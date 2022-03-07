@@ -7,7 +7,8 @@
 ##
 #############################################################################
 ##
-LoadPackage("semigroups", false);;
+SetInfoLevel(InfoPackageLoading, 4);
+LoadPackage("semigroups");
 # These "{No} errors detected" lines currently have to be printed in this way
 # to satisfy the automated GAP testing system that runs on Jenkins.
 if SemigroupsTestInstall()
