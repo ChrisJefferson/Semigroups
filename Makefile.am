@@ -82,8 +82,10 @@ all-local: semigroups.la
 if SYS_IS_CYGWIN
 	cp .libs/semigroups.dll $(GAPINSTALLLIB)
 if WITH_INCLUDED_LIBSEMIGROUPS
-# Cygwin will only look in this directory for dlls
-	cp libsemigroups/.libs/cygsemigroups-*.dll $(GAPROOT)/.libs
+# Cygwin will only look in these directories for dlls
+# Support older GAP which uses libtool
+	if test -d $(GAPPATH)/.libs; then cp libsemigroups/.libs/cygsemigroups-*.dll $(GAPROOT)/.libs; fi
+	cp libsemigroups/.libs/cygsemigroups-*.dll $(GAPROOT)/
 endif
 else
 	cp .libs/semigroups.so $(GAPINSTALLLIB)
